@@ -1,847 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Richard Bickley - Life Coach | Transform Your Life Today</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
+      /* Header */
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: -1px;
-        }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: -1px;
+      }
 
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link:hover {
+        transform: translateY(-2px);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: white;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 120px 2rem 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,100 1000,0 1000,100"/></svg>')
+          no-repeat center bottom;
+        background-size: cover;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease 0.3s forwards;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: white;
+        color: #667eea;
+        padding: 15px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease 0.6s forwards;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* About Section */
+      .about {
+        padding: 80px 2rem;
+        background: #f8f9fa;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .about-text h2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+      }
+
+      .about-text p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        color: #666;
+        line-height: 1.8;
+      }
+
+      .image-placeholder {
+        background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%);
+        border-radius: 15px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 1.1rem;
+        text-align: center;
+        border: 2px dashed #ddd;
+        transition: all 0.3s ease;
+      }
+
+      .image-placeholder:hover {
+        border-color: #667eea;
+        color: #667eea;
+      }
+
+      /* Services Section */
+      .services {
+        padding: 80px 2rem;
+        background: white;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10px;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .service-card {
+        background: white;
+        padding: 2.5rem 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .service-card h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      .service-card p {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        padding: 80px 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2.5rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .testimonial-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 80px 2rem;
+        background: #f8f9fa;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .contact-form {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .submit-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .contact-info h3 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+      }
+
+      .contact-info p {
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+      }
+
+      .contact-details {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover {
+        background: #667eea;
+        color: white;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .contact-item:hover .contact-icon {
+        background: white;
+        color: #667eea;
+      }
+
+      /* Footer */
+      .footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
         .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          flex-direction: column;
+          background-color: rgba(102, 126, 234, 0.95);
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          backdrop-filter: blur(10px);
+          padding: 2rem 0;
         }
 
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            transform: translateY(-2px);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: white;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
+        .nav-menu.active {
+          left: 0;
         }
 
         .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+          display: flex;
         }
 
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
         }
 
-        /* Hero Section */
+        .hamburger.active span:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 2rem 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,100 1000,0 1000,100"/></svg>') no-repeat center bottom;
-            background-size: cover;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
+          padding: 100px 1rem 60px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
+          font-size: 2.5rem;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.3s forwards;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.6s forwards;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 2rem;
-            background: #f8f9fa;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+          font-size: 1.1rem;
         }
 
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .about-text h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .image-placeholder {
-            background: linear-gradient(135deg, #e3e3e3 0%, #f0f0f0 100%);
-            border-radius: 15px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 2px dashed #ddd;
-            transition: all 0.3s ease;
-        }
-
-        .image-placeholder:hover {
-            border-color: #667eea;
-            color: #667eea;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 2rem;
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -10px;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 80px 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .testimonial-card {
-            background: rgba(255,255,255,0.1);
-            padding: 2.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 2rem;
-            background: #f8f9fa;
+          grid-template-columns: 1fr;
+          text-align: center;
         }
 
         .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
+          grid-template-columns: 1fr;
         }
 
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .services-grid {
+          grid-template-columns: 1fr;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .testimonials-grid {
+          grid-template-columns: 1fr;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 500;
+        .section-title {
+          font-size: 2rem;
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+        .nav {
+          padding: 0 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2rem;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .contact-info h3 {
-            color: #333;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .contact-info p {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
+        .service-card,
+        .testimonial-card,
+        .contact-form,
         .contact-details {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          padding: 1.5rem;
         }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .contact-item:hover .contact-icon {
-            background: white;
-            color: #667eea;
-        }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: rgba(102, 126, 234, 0.95);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                backdrop-filter: blur(10px);
-                padding: 2rem 0;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .hero {
-                padding: 100px 1rem 60px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .nav {
-                padding: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .service-card,
-            .testimonial-card,
-            .contact-form,
-            .contact-details {
-                padding: 1.5rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <nav class="nav">
-            <div class="logo">Richard Bickley</div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+      <nav class="nav">
+        <div class="logo">Richard Bickley</div>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Transform Your Life Today</h1>
-            <p>Unlock your potential and create the life you've always dreamed of with personalized life coaching that delivers real results.</p>
-            <a href="#contact" class="cta-button">Start Your Journey</a>
-        </div>
+      <div class="hero-content">
+        <h1>Transform Your Life Today</h1>
+        <p>
+          Unlock your potential and create the life you've always dreamed of
+          with personalized life coaching that delivers real results.
+        </p>
+        <a href="#contact" class="cta-button">Start Your Journey</a>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Richard</h2>
-                    <p>With over 8 years of experience in personal development and transformation, I'm passionate about helping people break through their limitations and achieve extraordinary results in all areas of their lives.</p>
-                    <p>My approach combines proven psychological techniques with practical action steps, creating a personalized roadmap for your success. Whether you're looking to advance your career, improve relationships, or find your life's purpose, I'm here to guide you every step of the way.</p>
-                    <p>I believe that everyone has unlimited potential waiting to be unlocked. Let's discover yours together.</p>
-                </div>
-                <div class="image-placeholder">
-                    📸 Your Professional Headshot Goes Here<br>
-                    <small>(Recommended: 400x400px, square format)</small>
-                </div>
-            </div>
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>About Richard</h2>
+            <p>
+              With over 8 years of experience in personal development and
+              transformation, I'm passionate about helping people break through
+              their limitations and achieve extraordinary results in all areas
+              of their lives.
+            </p>
+            <p>
+              My approach combines proven psychological techniques with
+              practical action steps, creating a personalized roadmap for your
+              success. Whether you're looking to advance your career, improve
+              relationships, or find your life's purpose, I'm here to guide you
+              every step of the way.
+            </p>
+            <p>
+              I believe that everyone has unlimited potential waiting to be
+              unlocked. Let's discover yours together.
+            </p>
+          </div>
+          <div class="image-placeholder">
+            📸 Your Professional Headshot Goes Here<br />
+            <small>(Recommended: 400x400px, square format)</small>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">How I Can Help You</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Goal Achievement</h3>
-                    <p>Transform your dreams into achievable goals with clear action plans and accountability systems that guarantee results.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3>Career Advancement</h3>
-                    <p>Accelerate your professional growth, negotiate better opportunities, and build the career that aligns with your values.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">❤️</div>
-                    <h3>Relationship Building</h3>
-                    <p>Develop deeper connections, improve communication skills, and create meaningful relationships in all areas of your life.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧠</div>
-                    <h3>Mindset Transformation</h3>
-                    <p>Overcome limiting beliefs, build unshakeable confidence, and develop a growth mindset that propels you forward.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚖️</div>
-                    <h3>Life Balance</h3>
-                    <p>Create harmony between work and personal life while maintaining peak performance in everything you do.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🌟</div>
-                    <h3>Purpose Discovery</h3>
-                    <p>Uncover your unique gifts and life purpose, then create a meaningful path that brings fulfillment and joy.</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">How I Can Help You</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎯</div>
+            <h3>Goal Achievement</h3>
+            <p>
+              Transform your dreams into achievable goals with clear action
+              plans and accountability systems that guarantee results.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💼</div>
+            <h3>Career Advancement</h3>
+            <p>
+              Accelerate your professional growth, negotiate better
+              opportunities, and build the career that aligns with your values.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">❤️</div>
+            <h3>Relationship Building</h3>
+            <p>
+              Develop deeper connections, improve communication skills, and
+              create meaningful relationships in all areas of your life.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🧠</div>
+            <h3>Mindset Transformation</h3>
+            <p>
+              Overcome limiting beliefs, build unshakeable confidence, and
+              develop a growth mindset that propels you forward.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">⚖️</div>
+            <h3>Life Balance</h3>
+            <p>
+              Create harmony between work and personal life while maintaining
+              peak performance in everything you do.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🌟</div>
+            <h3>Purpose Discovery</h3>
+            <p>
+              Uncover your unique gifts and life purpose, then create a
+              meaningful path that brings fulfillment and joy.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Clients Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Working with Richard completely transformed my approach to goal-setting. In just 6 months, I landed my dream job and doubled my income. The results speak for themselves!"
-                    </div>
-                    <div class="testimonial-author">- Sarah M., Marketing Director</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "I was stuck in a cycle of self-doubt and procrastination. Richard helped me break through those barriers and now I'm running my own successful business. Forever grateful!"
-                    </div>
-                    <div class="testimonial-author">- Mike R., Entrepreneur</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "The life balance strategies Richard taught me saved my marriage and made me a better parent. I finally feel like I'm thriving in all areas of my life."
-                    </div>
-                    <div class="testimonial-author">- Jennifer L., Working Mom</div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Working with Richard completely transformed my approach to
+              goal-setting. In just 6 months, I landed my dream job and doubled
+              my income. The results speak for themselves!"
             </div>
+            <div class="testimonial-author">- Sarah M., Marketing Director</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "I was stuck in a cycle of self-doubt and procrastination. Richard
+              helped me break through those barriers and now I'm running my own
+              successful business. Forever grateful!"
+            </div>
+            <div class="testimonial-author">- Mike R., Entrepreneur</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "The life balance strategies Richard taught me saved my marriage
+              and made me a better parent. I finally feel like I'm thriving in
+              all areas of my life."
+            </div>
+            <div class="testimonial-author">- Jennifer L., Working Mom</div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Ready to Get Started?</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <h3>Send Me a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Tell me about your goals</label>
-                            <textarea id="message" name="message" rows="5" placeholder="What would you like to achieve? What challenges are you facing?"></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+      <div class="container">
+        <h2 class="section-title">Ready to Get Started?</h2>
+        <div class="contact-content">
+          <div class="contact-form">
+            <h3>Send Me a Message</h3>
+            <form action="https://formspree.io/f/xblaqakv" method="POST">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="_replyto" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-group">
+                <label for="message">Tell me about your goals</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="What would you like to achieve? What challenges are you facing?"
+                  required
+                ></textarea>
+              </div>
+              <!-- Hidden fields for Formspree -->
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Contact Form Submission - Life Coach Website"
+              />
+              <input
+                type="hidden"
+                name="_next"
+                value="https://phammon.github.io/RichardLifeCoachWebsite?message=sent"
+              />
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <h3>Let's Connect</h3>
+            <p>
+              Ready to take the first step toward transforming your life? I
+              offer a complimentary 30-minute discovery call where we'll discuss
+              your goals and create a personalized action plan.
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div>
+                  <strong>Email</strong><br />
+                  richard_bickley@outlook.com
                 </div>
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>Ready to take the first step toward transforming your life? I offer a complimentary 30-minute discovery call where we'll discuss your goals and create a personalized action plan.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <strong>Email</strong><br>
-                                richard_bickley@outlook.com
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div>
-                                <strong>Phone</strong><br>
-                                (912)-272-3736
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <strong>Location</strong><br>
-                                Richmond Hill, GA<br>
-                                <small>Also available via video calls</small>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">🕒</div>
-                            <div>
-                                <strong>Availability</strong><br>
-                                Mon-Fri: 9AM-7PM<br>
-                                Sat: 10AM-4PM
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div>
+                  <strong>Phone</strong><br />
+                  (912)-272-3736
                 </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <strong>Location</strong><br />
+                  Richmond Hill, GA<br />
+                  <small>Also available via video calls</small>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">🕒</div>
+                <div>
+                  <strong>Availability</strong><br />
+                  Mon-Fri: 9AM-7PM<br />
+                  Sat: 10AM-4PM
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Richard Bickley Life Coaching. All rights reserved. | Transforming lives, one goal at a time.</p>
-        </div>
+      <div class="container">
+        <p>
+          &copy; 2025 Richard Bickley Life Coaching. All rights reserved. |
+          Transforming lives, one goal at a time.
+        </p>
+      </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
+      // Mobile menu toggle
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }));
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".nav-link").forEach((n) =>
+        n.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+        })
+      );
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
+          }
         });
+      });
 
-        // Header scroll effect
-        let lastScroll = 0;
-        const header = document.querySelector('.header');
+      // Header scroll effect
+      let lastScroll = 0;
+      const header = document.querySelector(".header");
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(102, 126, 234, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                header.style.backdropFilter = 'none';
-            }
-            
-            lastScroll = currentScroll;
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          header.style.background = "rgba(102, 126, 234, 0.95)";
+          header.style.backdropFilter = "blur(10px)";
+        } else {
+          header.style.background =
+            "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
+          header.style.backdropFilter = "none";
+        }
+
+        lastScroll = currentScroll;
+      });
+
+      // Form submission handler
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = new FormData(this);
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const phone = formData.get("phone");
+        const message = formData.get("message");
+
+        // Simple validation
+        if (!name || !email || !message) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        // Simulate form submission
+        const submitBtn = document.querySelector(".submit-btn");
+        const originalText = submitBtn.textContent;
+
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+          alert(
+            "Thank you for your message! I'll get back to you within 24 hours."
+          );
+          this.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }, 1500);
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
         });
+      }, observerOptions);
 
-        // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for your message! I\'ll get back to you within 24 hours.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.service-card, .testimonial-card, .about-text, .image-placeholder').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+      // Observe elements for animation
+      document
+        .querySelectorAll(
+          ".service-card, .testimonial-card, .about-text, .image-placeholder"
+        )
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
         });
     </script>
-</body>
+  </body>
 </html>
