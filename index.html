@@ -266,52 +266,79 @@
         color: #4b4b4b;
         line-height: 1.6;
       }
-      /* Who This is For Section */
-      .who-this-is-for {
-        padding: 80px 2rem;
-        background: linear-gradient(135deg, #355e3b 0%, #4b6b42 100%);
-        color: white;
-      }
-      .who-this-is-for h2 {
-        color: white;
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        position: relative;
-      }
-      .who-this-is-for h2::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -10px;
-        width: 60px;
-        height: 4px;
-        background: white;
-        border-radius: 2px;
-      }
-      .who-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 auto;
-        max-width: 800px;
-      }
-      .who-list li {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-        position: relative;
-        padding-left: 2.5rem;
-        line-height: 1.8;
-      }
-      .who-list li::before {
-        content: "✔️";
-        position: absolute;
-        left: 0;
-        top: 0;
-        font-size: 1.5rem;
-        line-height: 1;
-        color: #b5dba3;
-      }
+      /* Investment Section */
+      /* Investment Section */
+  .investment-section {
+    padding: 60px 20px;
+    background: #f9f9f9;
+  }
+
+  .investment-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .investment-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333;
+  }
+
+  .investment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .investment-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    text-align: left;
+    transition: transform 0.2s ease;
+  }
+
+  .investment-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .investment-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #222;
+  }
+
+  .investment-card p, 
+  .investment-card ul {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .investment-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+
+  .investment-card li {
+    margin-bottom: 8px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .investment-section {
+      padding: 40px 15px;
+    }
+    .investment-section .section-title {
+      font-size: 1.6rem;
+    }
+    .investment-card h3 {
+      font-size: 1.2rem;
+    }
+  }
       /* Consultation Section */
       .consultation {
         padding: 80px 2rem;
@@ -552,7 +579,7 @@
         .services-grid {
           grid-template-columns: 1fr;
         }
-        .who-list {
+        .investment {
           padding: 0 1rem;
         }
         .section-title {
@@ -567,7 +594,7 @@
           font-size: 2rem;
         }
         .service-card,
-        .who-this-is-for,
+        .investment,
         .contact-form,
         .contact-details {
           padding: 1.5rem;
@@ -583,7 +610,7 @@
           <li><a href="#home" class="nav-link">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#who-this-is-for" class="nav-link">Who This Is For</a></li>
+          <li><a href="#investment" class="nav-link">Investment</a></li>
           <li><a href="#consultation" class="nav-link">Consultation</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -690,25 +717,44 @@
         </div>
       </div>
     </section>
-    <section id="who-this-is-for" class="who-this-is-for">
-      <div class="container">
-        <h2>Who This Is For</h2>
-        <ul class="who-list">
-          <li>
-            Men going through life transitions (career, relationships, fatherhood).
-          </li>
-          <li>
-            Men carrying heavy responsibilities who need a place to unload and recharge.
-          </li>
-          <li>
-            Men seeking purpose, direction, or simply someone to talk to who understands.
-          </li>
-          <li>
-            Men who want to grow stronger, not just for themselves, but for the people they love.
-          </li>
+ <section id="investment" class="investment-section">
+  <div class="container">
+    <h2 class="section-title">Your Investment</h2>
+
+    <div class="investment-grid">
+      <!-- Pricing -->
+      <div class="investment-card">
+        <h3>Simple & Transparent</h3>
+        <p>
+          At Reel Talk Coaching, I keep things simple. Each coaching session is a flat 
+          <strong>$75 fee</strong> for up to an hour, with payment due at the time of the session.
+        </p>
+      </div>
+
+      <!-- Payment Options -->
+      <div class="investment-card">
+        <h3>Convenient Payment Methods</h3>
+        <p>We accept multiple options to make the process easy:</p>
+        <ul>
+          <li>💵 Cash</li>
+          <li>💳 Credit Card</li>
+          <li>📱 Cash App</li>
+          <li>📱 Venmo</li>
+          <li>💼 IvyPay</li>
         </ul>
       </div>
-    </section>
+
+      <!-- Value -->
+      <div class="investment-card">
+        <h3>Invest in Yourself</h3>
+        <p>
+          Your investment is not just in a session — it’s in <strong>your growth</strong> 
+          and the path toward building the life you want.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
     
     <section id="consultation" class="consultation">
       <div class="container">
@@ -793,7 +839,7 @@
                 <div class="contact-icon">📱</div>
                 <div>
                   <strong>Phone</strong><br />
-                  (912)-272-3736
+                   352-444-4444
                 </div>
               </div>
               <div class="contact-item">
@@ -922,7 +968,7 @@
       }, observerOptions);
       document
         .querySelectorAll(
-          ".service-card, .who-this-is-for, .about-text, .image-placeholder, .consultation-content"
+          ".service-card, .investment, .about-text, .image-placeholder, .consultation-content"
         )
         .forEach((el) => {
           el.style.opacity = "0";
