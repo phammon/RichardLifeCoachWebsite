@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reel Talk Coaching | Life Coaching for Men | Real Conversations, Real Results</title>
+    <title>Reel Talk Coaching | Life Coaching for Men</title>
     <style>
       * {
         margin: 0;
@@ -38,6 +38,23 @@
         padding: 0 2rem;
       }
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .logo-headshot {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #b5dba3;
+        transition: all 0.3s ease;
+      }
+      .logo-headshot:hover {
+        transform: scale(1.05);
+        border-color: white;
+      }
+      .logo-text {
         font-size: 1.8rem;
         font-weight: bold;
         letter-spacing: -1px;
@@ -198,6 +215,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center 30%;
       }
       .image-placeholder:hover {
         border-color: #26432b;
@@ -522,7 +540,17 @@
         background: #26432b;
         color: white;
         text-align: center;
-        padding: 2rem;
+        padding: 3rem 2rem 2rem;
+      }
+      .footer-logo {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 2rem;
+      }
+      .footer-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
       /* Animations */
       @keyframes fadeInUp {
@@ -605,11 +633,13 @@
   <body>
     <header class="header">
       <nav class="nav">
-        <div class="logo">Reel Talk Coaching</div>
+        <div class="logo">
+          <img src="Richard_outdoor1.jpg" alt="Richard Bickley" class="logo-headshot">
+          <span class="logo-text">Reel Talk Coaching</span>
+        </div>
         <ul class="nav-menu">
           <li><a href="#home" class="nav-link">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#investment" class="nav-link">Investment</a></li>
           <li><a href="#consultation" class="nav-link">Consultation</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -623,10 +653,9 @@
     </header>
     <section id="home" class="hero">
       <div class="hero-content">
-        <h1>Real Conversations, Real Results</h1>
+        <h1>Life Coaching for Men</h1>
         <p>
-          Life coaching for men who want more clarity, strength, and purpose.
-          Built on integrity, fairness, and understanding.
+          Sometimes life feels like a fight on the line…you're pulling, struggling, not sure if you'll land it or lose it. At Reel Talk Coaching, we're here to help you steady your grip, keep your balance, and reel in the life you're working for.
         </p>
         <a href="#consultation" class="cta-button">Start with a Free Consultation</a>
       </div>
@@ -654,66 +683,12 @@
           </div>
           <div class="image-placeholder">
             <img
-              src="reeltalk.png"
-              alt="Reel Talk Coaching Logo"
+              src="Richard_outdoor1.jpg"
+              alt="Richard Bickley"
               width="400"
               height="400"
             />
           </div>
-        </div>
-      </div>
-    </section>
-    <section id="services" class="services">
-      <div class="container">
-        <h2 class="section-title">How We Can Help You</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">🎯</div>
-            <h3>One-on-One Coaching</h3>
-            <p>
-              Personalized sessions designed to help you navigate hardships, build stronger
-              relationships, and step into the man you want to be.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">🧭</div>
-            <h3>Life Direction & Fulfillment</h3>
-            <p>
-              Support in clarifying your goals, whether in family, work, or personal growth,
-              and creating a step-by-step plan to move forward.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">🤝</div>
-            <h3>Brotherhood Support</h3>
-            <p>
-              Sometimes men just need someone to talk to, guy to guy. A safe, non-judgmental
-              space where you can be open without losing your strength.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">💪</div>
-            <h3>Strength & Resilience Building</h3>
-            <p>
-              Learn tools to handle stress, setbacks, and transitions with confidence,
-              and build the solid foundation you need to thrive.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">🧠</div>
-            <h3>Mindset Mastery</h3>
-            <p>
-              Transform your perspective and overcome limiting beliefs to unlock your full potential and achieve your goals.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">⚙️</div>
-            <h3>Accountability & Action</h3>
-            <p>
-              Stay on track with consistent support and a structured framework to turn your intentions into concrete results.
-            </p>
-          </div>
-        </div>
         </div>
       </div>
     </section>
@@ -839,7 +814,7 @@
                 <div class="contact-icon">📱</div>
                 <div>
                   <strong>Phone</strong><br />
-                   352-444-4444
+                  912-255-2490
                 </div>
               </div>
               <div class="contact-item">
@@ -865,6 +840,9 @@
     </section>
     <footer class="footer">
       <div class="container">
+        <div class="footer-logo">
+          <img src="reeltalk.png" alt="Reel Talk Coaching Logo">
+        </div>
         <p>
           &copy; 2025 Reel Talk Coaching. All rights reserved. |
           Real conversations that help men face life's challenges with confidence and resilience.
